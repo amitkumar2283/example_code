@@ -1,0 +1,34 @@
+   install Docker:
+===================
+apt update
+apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/debian \
+(lsb_release -cs) \
+table"
+pt update
+pt-get install docker-ce docker-ce-cli containerd.io
+ervice docker status
+
+Initialise Docker:
+====================
+
+ip add sh
+docker swarm init --advertise-addr 10.128.0.14
+docker service create --replicas  -p 80:80 --name web nginx
+docker service ls
+curl <ip/hostname>:80
+docker get pods
+docker ps -a
+docker service ls
+docker service update --image nginx:1.2 web
+docker ps
+docker service rollback web
+docker ps
+docker service ls
+docker service scale web=2
+docker ps
+docker node ls
+docker service ps web
+docker service ps
+docker node ps
