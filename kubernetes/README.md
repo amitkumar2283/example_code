@@ -1,4 +1,4 @@
-##Install Dependencies
+## Install Dependencies
 
 sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
@@ -9,21 +9,21 @@ EOF
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 
-##Check IP Address
+## Check IP Address
 
 ip add sh
 
-##Initialise Cluster
+## Initialise Cluster
 
 kubeadm init --apiserver-advertise-address 10.128.0.14 --pod-network-cidr=192.168.0.0/16
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-##Install CNI
+## Install CNI
 
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
-##Check if all pods are working
+## Check if all pods are working
 
 kubectl get pods -A
